@@ -10,7 +10,7 @@ function App() {
 
 	const [ showRoom, setShowRoom ] = useState(false);
 	const input = useRef(null);
-	const [ socket ] = useSocket('ws://192.168.100.15:5001/api/socket', {
+	const [ socket ] = useSocket('ws://localhost:5001/api/socket', {
 		autoConnect: false
 	});
 
@@ -57,7 +57,7 @@ function App() {
 		);
 
 		useEffect(() => {
-			axios.get('http://192.168.100.15:5001/messages').then((response) => {
+			axios.get('http://localhost:5001/messages').then((response) => {
 				setMessages(response.data.data);
 			});
 		}, []);
@@ -108,7 +108,7 @@ function App() {
 			}
 
 			axios
-				.post('http://192.168.100.15:5001/messages', {
+				.post('http://localhost:5001/messages', {
 					name: name,
 					message: msg
 				})
